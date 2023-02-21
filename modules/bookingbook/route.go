@@ -25,6 +25,12 @@ func (h RouterBooks) Route(router httpserver.RouteHandler) {
 
 	onlineLibrary.GET(
 		"/books",
-		h.requestHandler.getBook,
+		h.requestHandler.GetBook,
 	)
+
+	onlineLibrary.POST(
+		"/books",
+		h.requestHandler.SubmitBook,
+	)
+
 }

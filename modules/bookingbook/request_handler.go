@@ -2,6 +2,7 @@ package bookingbook
 
 import (
 	"github.com/bowoBp/csmart/utils/httpserver"
+	"github.com/bowoBp/csmart/utils/validator"
 	"net/http"
 	"strconv"
 )
@@ -10,8 +11,18 @@ type BooksRequestHandler struct {
 	ctrl BooksController
 }
 
-func (h BooksRequestHandler) getBook(c httpserver.Context) {
+func (h BooksRequestHandler) GetBook(c httpserver.Context) {
 	res := h.ctrl.GetBooks(getQueryParam(c))
+	c.JSON(http.StatusOK, res)
+}
+
+func (h BooksRequestHandler) SubmitBook(c httpserver.Context) {
+	var request BodySubmitBook
+	if !validator.BindAndValidateWithAbort(c, &request) {
+		return
+
+	}
+	res := h.ctrl.SubmitBooks(request)
 	c.JSON(http.StatusOK, res)
 }
 

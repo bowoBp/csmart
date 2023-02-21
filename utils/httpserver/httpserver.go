@@ -43,4 +43,5 @@ type Context interface {
 	Header(key, value string)
 	GetHeader(key string) string
 	JSON(code int, obj any)
+	ShouldBind(obj interface{}) error
 }

@@ -16,18 +16,6 @@ Use this command to run API app from root directory:
 go run app/api/api.go
 ```
 
-Use this command to run consumer app from root directory:
-
-```shell
-go run app/consumer/consumer.go
-```
-
-Use this command to run scheduler app from root directory:
-
-```shell
-go run app/scheduler/scheduler.go
-```
-
 ## Unit Tests
 
 ### Generate Mocks

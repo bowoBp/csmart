@@ -7,6 +7,7 @@ import (
 
 type BooksUseCase interface {
 	GetBooks(query map[string]string) ([]Book, error)
+	SubmitBooks(query BodySubmitBook) (bool, error)
 }
 
 type bookUseCase struct {
@@ -14,6 +15,20 @@ type bookUseCase struct {
 
 func (uc bookUseCase) GetBooks(query map[string]string) ([]Book, error) {
 	return getListBooksBySubject(query)
+}
+
+func (uc bookUseCase) SubmitBooks(query BodySubmitBook) (bool, error) {
+	datas := make([]BodySubmitBook, 0)
+
+	datas = append(datas, BodySubmitBook{
+		Name:       query.Name,
+		Email:      query.Email,
+		Phone:      query.Phone,
+		PickupDate: query.PickupDate,
+		TotalBook:  query.TotalBook,
+		Books:      query.Books,
+	})
+	return true, nil
 }
 
 func getListBooksBySubject(query map[string]string) ([]Book, error) {

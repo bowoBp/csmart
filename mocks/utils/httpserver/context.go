@@ -651,6 +651,48 @@ func (_c *Context_Set_Call) RunAndReturn(run func(string, interface{})) *Context
 	return _c
 }
 
+// ShouldBind provides a mock function with given fields: obj
+func (_m *Context) ShouldBind(obj interface{}) error {
+	ret := _m.Called(obj)
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(interface{}) error); ok {
+		r0 = rf(obj)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
+}
+
+// Context_ShouldBind_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ShouldBind'
+type Context_ShouldBind_Call struct {
+	*mock.Call
+}
+
+// ShouldBind is a helper method to define mock.On call
+//   - obj interface{}
+func (_e *Context_Expecter) ShouldBind(obj interface{}) *Context_ShouldBind_Call {
+	return &Context_ShouldBind_Call{Call: _e.mock.On("ShouldBind", obj)}
+}
+
+func (_c *Context_ShouldBind_Call) Run(run func(obj interface{})) *Context_ShouldBind_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(interface{}))
+	})
+	return _c
+}
+
+func (_c *Context_ShouldBind_Call) Return(_a0 error) *Context_ShouldBind_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *Context_ShouldBind_Call) RunAndReturn(run func(interface{}) error) *Context_ShouldBind_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Status provides a mock function with given fields: code
 func (_m *Context) Status(code int) {
 	_m.Called(code)
